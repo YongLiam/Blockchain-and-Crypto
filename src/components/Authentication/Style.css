@@ -1,0 +1,156 @@
+.container{
+  background: #94d0cf21;
+  padding: 20px;
+  border-radius: 20px;
+  width: 500px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+form button{
+  float: left;
+}
+label{
+ float: left;
+ font-size: 20px;
+ font-weight: bold;
+}
+input, select, Select{
+  padding: 10px;
+  background: #599190;
+  border: 1px solid #75d3d1;
+  border-radius: 10px;
+  color: white;
+  margin-bottom: 20px;
+  width: 95%;
+}
+.css-319lph-ValueContainer, .css-g1d714-ValueContainer{
+  border: 1px solid #75d3d1; 
+}
+/* .css-1hb7zxy-IndicatorsContainer, */
+option{
+  font-size: 18px;
+}
+input:focus{
+  padding: 10px;
+  background: #6fa9a8;
+  border: 1px solid #75d3d1;
+  border-radius: 10px;
+  color: white;
+}
+input[type=submit]{
+  float:left;
+  border: #00b5b3;
+  background-color: #00b5b3;
+  box-shadow: 1px 1px #ffffff42;
+}
+*,*:focus,*:hover{
+  outline:none;
+}
+
+.form-field{
+  width: 100%;
+  margin-bottom: 10px;
+}
+.btn-div{
+  margin-bottom: 20px;
+  width: 100%;
+  float: left;
+}
+
+table {
+  /* border-collapse: collapse; */
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+tr {
+    display: flex;
+  width: 100%;
+  border-bottom: 1px solid #73c6c5;
+}
+thead{
+    font-size: 18px;
+    text-transform: uppercase;
+    text-align: left;
+}
+tbody tr{
+  display: table-row;
+  text-align: left;
+}
+td {
+  padding: 5px;
+  word-break: break-all;
+}
+td:first-child{
+    flex: 0.3
+}
+ td:last-child{
+   flex: 1;
+ }
+ td a{
+     font-style: normal;
+     text-decoration: none;
+ }
+
+ .utxo-list{
+  font-size:medium;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+}
+
+
+my-header{
+  display: block;
+  margin-bottom: 20px;
+width: 100%;
+z-index: 2;
+background: #166463;
+border-top: 1px solid #ffedd1;
+color: white;
+overflow-x: hidden;
+}
+my-header a{
+  cursor: pointer;
+  font-style: normal;
+  text-decoration: none;
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  padding: 20px 16px;
+}
+
+ my-header a:hover {
+  background-color: #6ba9a8;
+  color: white;
+}
+
+my-header .nav-active{
+  background-color: #6ba9a8;
+}
+my-header .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  my-header a:not(:first-child) {display: none;}
+  my-header a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  my-header .responsive {position: relative;}
+  my-header .responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  my-header .responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
