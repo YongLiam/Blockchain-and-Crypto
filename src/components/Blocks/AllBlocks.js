@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaCubes } from 'react-icons/fa'
@@ -8,32 +7,35 @@ import { getTDate } from '../Others/GetDate';
 
 export default function AllBlocks({ gun }) {
     const [loading, setLoading] = useState(true)
-    const [blocks, setBlocks] = useState()
+    const [blocks, setBlocks] = useState(new Set())
 
     useEffect(() => {
-        gun.get('blockchain').once((bcBlocks) => {
-            setBlocks([])
-            if (bcBlocks)
-                Object.keys(bcBlocks).map((key) => {
-                    if (key !== '_')
-                        gun.get(`blockchain/${key}`).once((block) => {
-                            setBlocks(blocks => [...blocks, block])
-                        })
-                    return null;
-                })
-        })
+        async function getBlocks() {
+            gun.get('blockchain').once((bcBlocks) => {
+                if (bcBlocks)
+                    Object.keys(bcBlocks).map((key) => {
+                        if (key !== '_')
+                            gun.get(`blockchain/${key}`).once((block) => {
+                                setBlocks(prevState => new Set(prevState).add(block))
+                            })
+                        return null;
+                    })
+            })
+        }
+        gun.get('blockchain').on(() => getBlocks())
     }, [gun])
 
     useEffect(() => {
         if (blocks)
             setLoading(false)
     }, [blocks])
+
     return (
         loading ?
             <center><div className='loader'></div>
                 <div style={{ fontStyle: 'italic', fontSize: 18 }}>Getting blocks...</div></center>
             :
-            blocks.length > 0 ?
+            blocks.size > 0 ?
                 <div className='blocks-table'>
                     <h4 style={{ textAlign: 'left', marginLeft: '5%' }}><FaCubes color={colors.link} /> Blocks</h4>
                     <table style={{ margin: 'auto', width: '90%' }}>
@@ -48,7 +50,7 @@ export default function AllBlocks({ gun }) {
                         </thead>
 
                         <tbody>
-                            {blocks.sort((a, b) => a.timestamp > b.timestamp ? -1 : 1).map((block, index) => (
+                            {[...blocks].sort((a, b) => a.timestamp > b.timestamp ? -1 : 1).map((block, index) => (
                                 <tr key={index}>
                                     <td data-label="Height"><Link to={`/block/${block.height}`}>#{block.height}</Link></td>
                                     <td data-label="Hash"><Link to={`/block/${block.height}`}>{block.hash}</Link></td>
