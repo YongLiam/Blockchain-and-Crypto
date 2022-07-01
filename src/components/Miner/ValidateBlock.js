@@ -28,9 +28,7 @@ export default function ValidateBlock({ gun, user }) {
                             gun.get(`pending-blocks/${key}/coinBase`).once((cb) => {
                                 block.coinBaseTx = cb
                             })
-                            console.log(block)
                             gun.get(`pending-blocks/${key}/transactions`).once((tx) => {
-                                console.log(tx)
                                 if (tx)
                                     block.txsTemp = Object.keys(tx).map((bTx) => {
                                         if (bTx !== '_')

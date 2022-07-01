@@ -131,7 +131,7 @@ export default function SendTxManual({ UTXO, gun, user }) {
                             ? 'Required input amount reached'
                             : 'No UTXO found'
                     )}
-                    getOptionLabel={e => `${e.hash} : ${e.amount} ${COIN_SYMBOL}`}
+                    getOptionLabel={e => `${e.hash} : ${e.amount} RC`}
                     getOptionValue={e => e.hash}
                     placeholder='Select inputs' />
             </div>

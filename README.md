@@ -31,7 +31,7 @@ By:
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/YongLiam/blockchain-and-cryptocurrency.git
+   git clone https://github.com/YongLiam/Blockchain-and-Crypto.git
    ```
 2. Install NPM packages
    ```sh
